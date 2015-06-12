@@ -1,27 +1,45 @@
 package ch.ceff.donjon.game;
 
-import com.badlogic.gdx.ApplicationAdapter;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import ch.ceff.donjon.game.Screen.LoadingScreen;
 
-public class Donjon extends ApplicationAdapter {
-    SpriteBatch batch;
-    Texture img;
+import com.badlogic.gdx.Game;
+import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
-    @Override
-    public void create() {
-        batch = new SpriteBatch();
-        img = new Texture("badlogic.jpg");
-    }
+public class Donjon extends Game {
 
-    @Override
-    public void render() {
-        Gdx.gl.glClearColor(1, 0, 0, 1);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        batch.begin();
-        batch.draw(img, 0, 0);
-        batch.end();
-    }
+	public static AssetManager am;
+	public static int GAME_WIDTH = 640, GAME_HEIGHT = 480, SALLE_COL = 20, SALLE_ROW = 15;
+	public static int MAX_LIFE = 50;
+	public static int MAX_LIFE_MONSTER = 35;
+	public static int MAX_MONSTERS = 70;
+	public static BitmapFont defaultFont;
+
+	@Override
+	public void create() {		
+		setScreen(new LoadingScreen(this));
+	}
+
+	@Override
+	public void dispose() {
+		am.dispose();
+		defaultFont.dispose();
+	}
+
+	@Override
+	public void render() {		
+		super.render();
+	}
+
+	@Override
+	public void resize(int width, int height) {
+	}
+
+	@Override
+	public void pause() {
+	}
+
+	@Override
+	public void resume() {
+	}
 }
