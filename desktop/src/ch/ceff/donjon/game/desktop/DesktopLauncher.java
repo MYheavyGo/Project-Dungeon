@@ -1,5 +1,6 @@
 package ch.ceff.donjon.game.desktop;
 
+import com.badlogic.gdx.Files;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 
@@ -11,6 +12,9 @@ public class DesktopLauncher {
 
         config.title = "Donjon";
         config.resizable = false;
+        config.useGL30 = true;
+        config.vSyncEnabled = true;
+        config.addIcon("data/icon.png", Files.FileType.Absolute);
 
         new LwjglApplication(new Donjon(), config);
     }
